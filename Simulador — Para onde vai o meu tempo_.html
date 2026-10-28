@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para onde vai o meu tempo?</title>
+<style>
+:root {
+  --site-primary: #17324D;
+  --site-secondary: #D9F0EC;
+  --site-background: #F4F7FA;
+  --site-on-primary: #FFFFFF;
+  --site-on-secondary: #17324D;
+  --site-on-background: #172B3A;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--site-font-body); color: var(--site-on-background); background: var(--site-background); }
+#app { min-height: 100vh; width: 100%; border-radius: 0; background-color: var(--site-background); background-color: light-dark(var(--site-background), #111B27); color: light-dark(var(--site-on-background), #EDF4FA); padding: calc(28px * var(--site-spacing-scale)) 18px 36px; }
+main { max-width: 940px; margin: 0 auto; }
+.hero { background: var(--site-primary); color: var(--site-on-primary); border-radius: calc(24px * var(--site-radius-scale)); padding: calc(30px * var(--site-spacing-scale)); position: relative; overflow: hidden; }
+.hero:after { content: ""; position: absolute; width: 210px; height: 210px; right: -65px; top: -85px; border-radius: 50%; background: var(--site-secondary); opacity: calc(.14 * var(--site-decoration-opacity)); }
+.kicker { text-transform: uppercase; letter-spacing: .12em; font-weight: 800; font-size: .76rem; color: #BCE9E2; }
+h1 { font-family: var(--site-font-heading); font-size: calc(clamp(2rem, 5vw, 3.1rem) * var(--site-heading-scale)); line-height: 1.05; margin: 12px 0; max-width: 650px; }
+.hero p { max-width: 650px; color: #E4EDF4; line-height: 1.6; margin-bottom: 0; }
+.layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(260px, .9fr); gap: 18px; margin-top: 18px; }
+.panel { border: 1px solid light-dark(#D9E2EA, #344556); background: light-dark(#FFFFFF, #1A2938); border-radius: calc(20px * var(--site-radius-scale)); padding: calc(24px * var(--site-spacing-scale)); }
+h2 { font-family: var(--site-font-heading); font-size: calc(1.3rem * var(--site-heading-scale)); margin: 0 0 8px; }
+.muted { color: light-dark(#526577, #BDCAD5); line-height: 1.5; margin-top: 0; }
+label { display: block; font-weight: 750; margin: 20px 0 9px; }
+.range-line { display: flex; align-items: center; gap: 12px; }
+input[type=range] { width: 100%; accent-color: #168C83; cursor: pointer; }
+.number { min-width: 92px; text-align: center; padding: 12px 10px; border-radius: 12px; background: var(--site-secondary); color: var(--site-on-secondary); font-weight: 850; font-size: 1.08rem; }
+input[type=number] { width: 100%; border: 1px solid #A9BAC8; background: light-dark(#FFFFFF, #172431); color: inherit; border-radius: 10px; padding: 12px; font: inherit; }
+.helper { font-size: .9rem; color: light-dark(#526577, #BDCAD5); margin-top: 8px; }
+.results { display: grid; gap: 12px; margin-top: 20px; }
+.stat { background: light-dark(#F2F7FA, #223445); border-radius: 14px; padding: 16px; }
+.stat .label { font-size: .9rem; color: light-dark(#526577, #BDCAD5); margin-bottom: 5px; }
+.stat strong { font-size: clamp(1.5rem, 4vw, 2rem); letter-spacing: -.03em; }
+.stat small { display: block; margin-top: 4px; color: light-dark(#526577, #BDCAD5); }
+.callout { background: var(--site-secondary); color: var(--site-on-secondary); padding: 18px; border-radius: 16px; line-height: 1.55; margin-top: 16px; }
+.callout strong { display: block; margin-bottom: 5px; }
+.reflection { margin-top: 18px; }
+.reflection label { margin-top: 16px; }
+textarea { width: 100%; min-height: 78px; resize: vertical; padding: 12px; font: inherit; color: inherit; background: light-dark(#FFFFFF, #172431); border: 1px solid #A9BAC8; border-radius: 10px; }
+button { border: 0; border-radius: 999px; padding: 12px 17px; background: var(--site-primary); color: var(--site-on-primary); font: inherit; font-weight: 750; cursor: pointer; margin-top: 14px; }
+button:hover { filter: brightness(1.12); }
+button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid #E9A23B; outline-offset: 3px; }
+.footer { text-align: center; font-size: .86rem; color: light-dark(#526577, #BDCAD5); margin: 20px 0 0; }
+@media (max-width: 700px) { .layout { grid-template-columns: 1fr; } .hero { padding: 24px; } #app { padding: 14px 12px 28px; } }
+@media print { body, #app { background: #fff; color: #172B3A; } button, input[type=range] { display: none; } .panel, .hero { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div id="app" data-sites-preview-theme="custom">
+<main>
+<section class="hero">
+<div class="kicker">Atividade para o 8.º ano · SPO</div>
+<h1>Para onde vai o meu tempo?</h1>
+<p>Experimenta o simulador: estima quanto tempo passas no telemóvel e descobre o que esse tempo representa ao longo de uma semana e de um ano. Não há respostas certas ou erradas — o objetivo é refletir.</p>
+</section>
+<div class="layout">
+<section class="panel">
+<h2>1. Estima a tua utilização</h2>
+<p class="muted">Podes consultar o tempo real nas definições do teu telemóvel ou fazer uma estimativa.</p>
+<label for="hours">Horas por dia</label>
+<div class="range-line"><input id="hours" type="range" min="0" max="16" step="0.5" value="4"><output class="number" id="hoursOut" for="hours">4 h</output></div>
+<label for="minutes">Minutos adicionais por dia</label>
+<div class="range-line"><input id="minutes" type="range" min="0" max="55" step="5" value="0"><output class="number" id="minutesOut" for="minutes">0 min</output></div>
+<p class="helper">Move os controlos para ajustares a tua estimativa.</p>
+<div class="callout"><strong>Uma nota importante</strong>O tempo de ecrã não é todo igual. Falar com a família, estudar, criar ou descansar pode ter objetivos diferentes. O importante é perceber se o uso está a afetar o sono, a escola, as relações ou outras atividades.</div>
+<div class="reflection">
+<h2>2. Pensa no teu equilíbrio</h2>
+<label for="good">O que costumo fazer no telemóvel que é útil ou positivo?</label>
+<textarea id="good" placeholder="Ex.: falar com amigos, pesquisar, ouvir música…"></textarea>
+<label for="change">Que atividade gostaria de proteger ou fazer mais vezes sem telemóvel?</label>
+<textarea id="change" placeholder="Ex.: dormir melhor, praticar desporto, ler, estar com amigos…"></textarea>
+<button type="button" id="printBtn">Imprimir / guardar em PDF</button>
+</div>
+</section>
+<section class="panel" aria-live="polite">
+<h2>O teu resultado</h2>
+<p class="muted">Com base na estimativa que introduziste.</p>
+<div class="results">
+<div class="stat"><div class="label">Por dia</div><strong id="daily">4 h</strong><small>tempo estimado no telemóvel</small></div>
+<div class="stat"><div class="label">Por semana</div><strong id="weekly">28 h</strong><small>equivalente a vários períodos de atividade</small></div>
+<div class="stat"><div class="label">Por ano</div><strong id="yearly">1 460 h</strong><small id="days">cerca de 61 dias completos</small></div>
+</div>
+<div class="callout"><strong>Desafio de reflexão</strong><span id="message">Se quisesses recuperar um pouco deste tempo, que pequena mudança seria realista para ti?</span></div>
+<p class="muted" style="font-size:.9rem; margin-top:16px;">Os resultados são estimativas matemáticas (7 dias por semana e 365 dias por ano), não uma avaliação clínica nem um julgamento da tua utilização.</p>
+</section>
+</div>
+<p class="footer">SPO · Material de sensibilização sobre consumos sem substâncias</p>
+</main>
+</div>
+<script>
+const hours = document.getElementById('hours');
+const minutes = document.getElementById('minutes');
+const fmt = n => new Intl.NumberFormat('pt-PT', {maximumFractionDigits: 1}).format(n);
+function update() {
+  const daily = Number(hours.value) + Number(minutes.value) / 60;
+  const weekly = daily * 7;
+  const yearly = daily * 365;
+  document.getElementById('hoursOut').textContent = `${hours.value} h`;
+  document.getElementById('minutesOut').textContent = `${minutes.value} min`;
+  document.getElementById('daily').textContent = `${fmt(daily)} h`;
+  document.getElementById('weekly').textContent = `${fmt(weekly)} h`;
+  document.getElementById('yearly').textContent = `${fmt(yearly)} h`;
+  document.getElementById('days').textContent = `cerca de ${fmt(yearly / 24)} dias completos`;
+  const msg = daily === 0 ? 'Ótimo ponto de partida: pensa também no equilíbrio entre atividades online e offline.' : daily < 2 ? 'Pensa se este tempo está alinhado com as tuas prioridades e se consegues parar quando queres.' : daily < 5 ? 'Escolhe uma pequena mudança realista, como deixar o telemóvel de lado durante uma refeição ou antes de dormir.' : 'Vale a pena observar se o uso está a retirar tempo ao sono, ao estudo, ao movimento ou às relações presenciais.';
+  document.getElementById('message').textContent = msg;
+}
+hours.addEventListener('input', update);
+minutes.addEventListener('input', update);
+document.getElementById('printBtn').addEventListener('click', () => window.print());
+update();
+</script>
+</body>
+</html>
